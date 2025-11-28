@@ -1,8 +1,412 @@
-<html>
-  <head>
-    <title> Blog công nghệ </title>
-  </head>
-  <body>
-    <h1> Blog công nghệ </h1>
-  </body>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machi Photobooth - Ghi Lại Khoảnh Khắc!</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <style>
+        /* 1. Global Styles & Reset */
+        :root {
+            --primary-color: #FF5E78; /* Hồng tươi - Màu chủ đạo Machi */
+            --secondary-color: #4CAF50; /* Xanh lá tươi */
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f9f9f9;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* 2. Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px 10px 10px 0;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #e54b64; /* Tone tối hơn của primary */
+            box-shadow: 0 4px 15px rgba(255, 94, 120, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        /* 3. Header & Navigation */
+        .header {
+            background-color: var(--text-light);
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+
+        .nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav a {
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* 4. Hero Section */
+        .hero {
+            background-image: linear-gradient(135deg, #FFDFD9 0%, #E0F7FA 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .tagline {
+            font-family: var(--font-heading);
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        /* Image Placeholder for Hero */
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 5. Features Section */
+        .features {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--text-light);
+        }
+
+        .features h3 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--bg-light);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon {
+            font-size: 3em;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h4 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* 6. Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #FFF5F7; /* Nền hồng nhạt */
+        }
+
+        .gallery h3 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-photo {
+            background-color: #ccc; /* Màu nền tạm */
+            height: 250px; /* Chiều cao cố định cho ảnh */
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            /* Styles để hình ảnh thật đẹp hơn */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        /* 7. CTA Section */
+        .cta {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta h3 {
+            color: var(--text-light);
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta .btn-primary {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+            border-color: var(--text-light);
+        }
+
+        .cta .btn-primary:hover {
+            background-color: #eee;
+            box-shadow: none;
+        }
+
+        /* 8. Footer */
+        .footer {
+            background-color: var(--text-dark);
+            color: #bbb;
+            padding: 20px 0;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Media Queries cho Responsive Design */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+            }
+            .nav ul {
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MACHI</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#features">Tính Năng</a></li>
+                    <li><a href="#gallery">Bộ Sưu Tập</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="tagline">CHỤP CỰC CHẤT - LẤY CỰC NHANH</p>
+                <h2>Khoảnh Khắc Đáng Nhớ,<br>Bắt Trọn Cùng **MACHI**</h2>
+                <a href="#contact" class="btn btn-primary">Bắt Đầu Chụp Ngay!</a>
+                <a href="#features" class="btn btn-secondary">Tìm Hiểu Thêm</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h3>✨ Machi có gì đặc biệt?</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="icon">🖼️</span>
+                    <h4>Đa Dạng Khung Ảnh</h4>
+                    <p>Hàng trăm mẫu template độc quyền, luôn được cập nhật theo xu hướng.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🚀</span>
+                    <h4>Tốc Độ Siêu Tốc</h4>
+                    <p>Chụp và in ảnh tức thì, không cần chờ đợi. Chia sẻ digital ngay lập tức.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🌈</span>
+                    <h4>Chất Lượng Vượt Trội</h4>
+                    <p>Máy ảnh chuyên nghiệp, ánh sáng studio, giấy in chất lượng cao.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🎉</span>
+                    <h4>Phụ Kiện Vui Nhộn</h4>
+                    <p>Kho phụ kiện phong phú: mũ, kính, bảng chữ, hoa tai... cho bức ảnh thêm sinh động.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h3>💖 Bộ Sưu Tập Ảnh Đã Chụp</h3>
+            <div class="gallery-grid">
+
+                <div class="gallery-photo">Ảnh 1</div>
+                <div class="gallery-photo">Ảnh 2</div>
+                <div class="gallery-photo">Ảnh 3</div>
+                <div class="gallery-photo">Ảnh 4</div>
+            </div>
+            <a href="#" class="btn btn-primary">Xem Thêm Ảnh</a>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h3>Bạn Sẵn Sàng Lưu Giữ Khoảnh Khắc Chưa?</h3>
+            <p>Machi có mặt tại nhiều địa điểm hot nhất. Tìm vị trí gần bạn ngay!</p>
+            <a href="#" class="btn btn-primary">Tìm Địa Điểm Machi</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Machi Photobooth. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
