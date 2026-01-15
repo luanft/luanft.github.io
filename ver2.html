@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microchip Year End Party 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      :root {
+    --bg-cream: #FDF5E6;
+    --accent-orange: #E68A45; /* Màu cam ở đáy */
+    --text-brown: #8B4513;
+    --red-lantern: #D32F2F;
+}
+
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Khung thiệp giống ảnh */
+.card-container {
+    width: 400px;
+    height: 800px;
+    background-color: var(--bg-cream);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Phần trang trí trên đầu */
+.card-header {
+    height: 25%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.lantern-group {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Giả lập lồng đèn bằng CSS */
+.lantern {
+    background: var(--red-lantern);
+    border-radius: 50% / 20%;
+    position: relative;
+    border: 2px solid #000;
+}
+.lantern.large { width: 100px; height: 80px; }
+.lantern.small { width: 50px; height: 70px; margin-top: 40px; }
+
+/* Phần nội dung chính ở giữa */
+.card-body {
+    flex: 1;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.text-year-end {
+    font-family: 'Dancing Script', cursive;
+    font-size: 80px;
+    color: var(--text-brown);
+    margin: 0;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.text-party {
+    font-size: 60px;
+    letter-spacing: 15px;
+    color: var(--accent-orange);
+    margin-top: -20px;
+}
+
+.text-2025 {
+    font-size: 45px;
+    letter-spacing: 20px;
+    color: var(--text-brown);
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 20px 0;
+}
+
+.brand-section {
+    margin-top: 40px;
+}
+
+.brand-logo { width: 120px; }
+.brand-name { font-size: 16px; margin-top: 10px; color: #333; }
+
+/* Phần đáy màu cam */
+.card-footer {
+    height: 20%;
+    background-color: var(--accent-orange);
+    position: relative;
+}
+
+/* Giả lập bánh chưng */
+.banh-chung-group {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.banh-chung {
+    width: 120px;
+    height: 100px;
+    background: #4A5D23; /* Màu xanh lá đậm */
+    border: 2px solid #2F3E13;
+    transform: rotate(-15deg);
+}
+
+.item-2 {
+    transform: rotate(10deg);
+    margin-left: -40px;
+    background: #5E742C;
+}
+
+/* Họa tiết góc (L shapes) */
+.corner-decor {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--accent-orange);
+}
+.top-left { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
+.top-right { top: 20px; right: 20px; border-left: 0; border-bottom: 0; }
+.bottom-left { bottom: 20px; left: 20px; border-right: 0; border-top: 0; border-color: white; }
+.bottom-right { bottom: 20px; right: 20px; border-left: 0; border-top: 0; border-color: white; }
+
+/* Thông tin bổ sung bên dưới */
+.details-container {
+    width: 400px;
+    padding: 40px 20px;
+    background: white;
+}
+    </style>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const timeline = document.querySelector('.timeline');
+    
+    // Tạo dữ liệu từ 2014 đến 2026
+    for (let year = 2014; year <= 2026; year++) {
+        const item = document.createElement('div');
+        item.classList.add('time-item');
+        
+        // Bạn có thể thay link ảnh thật của công ty vào đây
+        const placeholderImg = `https://picsum.photos/seed/${year}/400/250`;
+        
+        item.innerHTML = `
+            <div class="content">
+                <h3>Năm ${year}</h3>
+                <img src="${placeholderImg}" alt="Microchip ${year}" class="time-img">
+                <p>Kỷ niệm hành trình năm ${year} của Microchip Việt Nam với những cột mốc đáng nhớ.</p>
+            </div>
+        `;
+        timeline.appendChild(item);
+    }
+
+    // Hiệu ứng cuộn mượt
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+  </script>
+  
+</head>
+<body>
+
+    <div class="card-container">
+        <header class="card-header">
+            <div class="corner-decor top-left"></div>
+            <div class="corner-decor top-right"></div>
+            <div class="lantern-group">
+                <div class="lantern small"></div>
+                <div class="lantern large"></div>
+                <div class="lantern small"></div>
+            </div>
+        </header>
+
+        <main class="card-body">
+            <h1 class="text-year-end">Year End</h1>
+            <h2 class="text-party">PARTY</h2>
+            <div class="text-2025">2 0 2 5</div>
+            
+            <div class="brand-section">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Microchip_Technology_logo.svg/1024px-Microchip_Technology_logo.svg.png" alt="Microchip Logo" class="brand-logo">
+                <h3 class="brand-name">MICROCHIP TECHNOLOGY VIET NAM</h3>
+            </div>
+        </main>
+
+        <footer class="card-footer">
+            <div class="banh-chung-group">
+                <div class="banh-chung item-1"></div>
+                <div class="banh-chung item-2"></div>
+            </div>
+            <div class="corner-decor bottom-left"></div>
+            <div class="corner-decor bottom-right"></div>
+        </footer>
+    </div>
+
+    <section class="details-container">
+        <div class="event-info-box">
+            <p><strong>📍 Địa điểm:</strong> Khách sạn New World, 23/9 Trần Minh Luận</p>
+            <p><strong>⏰ Thời gian:</strong> 18:00 - 17/01/2026</p>
+            <p><strong>👔 Dresscode:</strong> Đồng phục công ty</p>
+        </div>
+        <div id="timeline-app"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
