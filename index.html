@@ -3,258 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microchip VN - Year End Party 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <title>Machi Photobooth - Ghi Lại Khoảnh Khắc!</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <style>
-
+        /* 1. Global Styles & Reset */
         :root {
-    --primary-color: #D2691E; /* Cam đất */
-    --secondary-color: #CD5C5C; /* Đỏ nhạt */
-    --bg-color: #FDF5E6; /* Màu kem */
-    --text-dark: #4A4A4A;
-}
+            --primary-color: #FF5E78; /* Hồng tươi - Màu chủ đạo Machi */
+            --secondary-color: #4CAF50; /* Xanh lá tươi */
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f9f9f9;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Arial', sans-serif;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    color: white;
-}
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
 
-.overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+        }
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
+        ul {
+            list-style: none;
+        }
 
-.logo { width: 180px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
 
-.event-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 5rem;
-    color: #FFD700;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
+        /* 2. Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px 10px 10px 0;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.year {
-    font-size: 3rem;
-    letter-spacing: 15px;
-    font-weight: bold;
-    margin: 10px 0;
-}
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: 2px solid var(--primary-color);
+        }
 
-/* Timeline */
-.timeline-section { padding: 80px 20px; background: #fff; }
-.section-title { text-align: center; margin-bottom: 50px; color: var(--primary-color); font-size: 2.5rem; }
+        .btn-primary:hover {
+            background-color: #e54b64; /* Tone tối hơn của primary */
+            box-shadow: 0 4px 15px rgba(255, 94, 120, 0.4);
+        }
 
-.timeline {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-}
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
 
-.timeline::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    background: var(--primary-color);
-    top: 0; bottom: 0; left: 50%;
-}
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
 
-.time-item {
-    padding: 20px 40px;
-    position: relative;
-    width: 50%;
-}
+        /* 3. Header & Navigation */
+        .header {
+            background-color: var(--text-light);
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.time-item:nth-child(odd) { left: 0; text-align: right; }
-.time-item:nth-child(even) { left: 50%; text-align: left; }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
 
-.time-item::before {
-    content: '';
-    position: absolute;
-    width: 20px; height: 20px;
-    background: var(--secondary-color);
-    border-radius: 50%;
-    top: 25px;
-    z-index: 1;
-}
+        .logo {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
 
-.time-item:nth-child(odd)::before { right: -10px; }
-.time-item:nth-child(even)::before { left: -10px; }
+        .nav ul {
+            display: flex;
+            gap: 25px;
+        }
 
-.time-img {
-    width: 100%;
-    height: 150px;
-    background: #eee;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    object-fit: cover;
-}
+        .nav a {
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-/* Info Section */
-.info-section { padding: 60px 0; background: var(--bg-color); }
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding: 0 10%; }
-.info-card {
-    background: white;
-    padding: 30px;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border-bottom: 5px solid var(--primary-color);
-}
-.info-card i { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 15px; }
+        .nav a:hover, .nav a.active {
+            color: var(--primary-color);
+        }
 
-/* Menu & Agenda */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 80px 10%; }
-.sub-title { color: var(--primary-color); margin-bottom: 20px; border-left: 5px solid var(--secondary-color); padding-left: 10px; }
-ul { list-style: none; }
-li { margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px dashed #ccc; }
-li span { font-weight: bold; color: var(--secondary-color); margin-right: 15px; }
+        /* 4. Hero Section */
+        .hero {
+            background-image: linear-gradient(135deg, #FFDFD9 0%, #E0F7FA 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
 
-footer { text-align: center; padding: 40px; background: #333; color: white; }
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
 
-@media (max-width: 768px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .timeline::after { left: 31px; }
-    .time-item { width: 100%; text-align: left !important; padding-left: 70px; }
-    .time-item::before { left: 21px !important; }
-}
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .tagline {
+            font-family: var(--font-heading);
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        /* Image Placeholder for Hero */
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 5. Features Section */
+        .features {
+            padding: 80px 0;
+            text-align: center;
+            background-color: var(--text-light);
+        }
+
+        .features h3 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--bg-light);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon {
+            font-size: 3em;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h4 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* 6. Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #FFF5F7; /* Nền hồng nhạt */
+        }
+
+        .gallery h3 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-photo {
+            background-color: #ccc; /* Màu nền tạm */
+            height: 250px; /* Chiều cao cố định cho ảnh */
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            /* Styles để hình ảnh thật đẹp hơn */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        /* 7. CTA Section */
+        .cta {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta h3 {
+            color: var(--text-light);
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta .btn-primary {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+            border-color: var(--text-light);
+        }
+
+        .cta .btn-primary:hover {
+            background-color: #eee;
+            box-shadow: none;
+        }
+
+        /* 8. Footer */
+        .footer {
+            background-color: var(--text-dark);
+            color: #bbb;
+            padding: 20px 0;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Media Queries cho Responsive Design */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+            }
+            .nav ul {
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .hero h2 {
+                font-size: 2.5em;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const timeline = document.querySelector('.timeline');
-    
-    // Tạo dữ liệu từ 2014 đến 2026
-    for (let year = 2014; year <= 2026; year++) {
-        const item = document.createElement('div');
-        item.classList.add('time-item');
-        
-        // Bạn có thể thay link ảnh thật của công ty vào đây
-        const placeholderImg = `https://picsum.photos/seed/${year}/400/250`;
-        
-        item.innerHTML = `
-            <div class="content">
-                <h3>Năm ${year}</h3>
-                <img src="${placeholderImg}" alt="Microchip ${year}" class="time-img">
-                <p>Kỷ niệm hành trình năm ${year} của Microchip Việt Nam với những cột mốc đáng nhớ.</p>
-            </div>
-        `;
-        timeline.appendChild(item);
-    }
-
-    // Hiệu ứng cuộn mượt
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-});
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Microchip_Technology_logo.svg/1280px-Microchip_Technology_logo.svg.png" alt="Microchip Logo" class="logo">
-            <h2 class="company-name">MICROCHIP TECHNOLOGY VIET NAM</h2>
-            <h1 class="event-title">Year End Party</h1>
-            <div class="year">2 0 2 5</div>
-            <p class="slogan">Hành trình vươn tầm - Kết nối tương lai</p>
-            <a href="#info" class="btn-scroll">Khám phá ngay <i class="fas fa-chevron-down"></i></a>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">MACHI</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#features">Tính Năng</a></li>
+                    <li><a href="#gallery">Bộ Sưu Tập</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <section class="timeline-section">
-        <h2 class="section-title">Hành Trình Phát Triển</h2>
-        <div class="timeline">
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="tagline">CHỤP CỰC CHẤT - LẤY CỰC NHANH</p>
+                <h2>Khoảnh Khắc Đáng Nhớ,<br>Bắt Trọn Cùng **MACHI**</h2>
+                <a href="#contact" class="btn btn-primary">Bắt Đầu Chụp Ngay!</a>
+                <a href="#features" class="btn btn-secondary">Tìm Hiểu Thêm</a>
             </div>
+
+        </div>
     </section>
 
-    <section id="info" class="info-section">
+    <section id="features" class="features">
         <div class="container">
-            <div class="info-grid">
-                <div class="info-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Địa Điểm</h3>
-                    <p>Khách sạn New World</p>
-                    <p>23/9 Trần Minh Luận</p>
-                    <a href="https://maps.google.com" target="_blank" class="map-link">Xem bản đồ</a>
+            <h3>✨ Machi có gì đặc biệt?</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="icon">🖼️</span>
+                    <h4>Đa Dạng Khung Ảnh</h4>
+                    <p>Hàng trăm mẫu template độc quyền, luôn được cập nhật theo xu hướng.</p>
                 </div>
-                <div class="info-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Thời Gian</h3>
-                    <p>18:00 PM</p>
-                    <p>Ngày 17 tháng 01 năm 2026</p>
+                <div class="feature-item">
+                    <span class="icon">🚀</span>
+                    <h4>Tốc Độ Siêu Tốc</h4>
+                    <p>Chụp và in ảnh tức thì, không cần chờ đợi. Chia sẻ digital ngay lập tức.</p>
                 </div>
-                <div class="info-card">
-                    <i class="fas fa-tshirt"></i>
-                    <h3>Dresscode</h3>
-                    <p><strong>Đồng phục công ty</strong></p>
-                    <p>Chỉnh tề & Tự tin</p>
+                <div class="feature-item">
+                    <span class="icon">🌈</span>
+                    <h4>Chất Lượng Vượt Trội</h4>
+                    <p>Máy ảnh chuyên nghiệp, ánh sáng studio, giấy in chất lượng cao.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🎉</span>
+                    <h4>Phụ Kiện Vui Nhộn</h4>
+                    <p>Kho phụ kiện phong phú: mũ, kính, bảng chữ, hoa tai... cho bức ảnh thêm sinh động.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="details-section">
-        <div class="container grid-2">
-            <div class="agenda">
-                <h2 class="sub-title">Chương Trình</h2>
-                <ul>
-                    <li><span>18:00</span> Đón khách & Check-in</li>
-                    <li><span>18:30</span> Khai mạc & Vinh danh</li>
-                    <li><span>19:00</span> Nhập tiệc</li>
-                    <li><span>20:00</span> Văn nghệ & Lucky Draw</li>
-                </ul>
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h3>💖 Bộ Sưu Tập Ảnh Đã Chụp</h3>
+            <div class="gallery-grid">
+
+                <div class="gallery-photo">Ảnh 1</div>
+                <div class="gallery-photo">Ảnh 2</div>
+                <div class="gallery-photo">Ảnh 3</div>
+                <div class="gallery-photo">Ảnh 4</div>
             </div>
-            <div class="menu">
-                <h2 class="sub-title">Thực Đơn Tiệc</h2>
-                <ul>
-                    <li>Khai vị Tam Hợp</li>
-                    <li>Súp Hải Sản Hoàng Kim</li>
-                    <li>Tôm Càng Xanh Hấp Tỏi</li>
-                    <li>Bò Nấu Rượu Vang & Bánh Mì</li>
-                    <li>Lẩu Nấm Linh Chi</li>
-                    <li>Chè Yến Tuyết Nhĩ</li>
-                </ul>
-            </div>
+            <a href="#" class="btn btn-primary">Xem Thêm Ảnh</a>
+        </div>
+    </section>
+
+    <section id="contact" class="cta">
+        <div class="container">
+            <h3>Bạn Sẵn Sàng Lưu Giữ Khoảnh Khắc Chưa?</h3>
+            <p>Machi có mặt tại nhiều địa điểm hot nhất. Tìm vị trí gần bạn ngay!</p>
+            <a href="#" class="btn btn-primary">Tìm Địa Điểm Machi</a>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2025 Microchip Technology Viet Nam. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Machi Photobooth. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
